@@ -5,10 +5,10 @@ UML
 
 LoginForm class
 
-- userid
-- password
-- user_authenticated
-- user_priviliges
+- userid int
+- password String
+- userAuthenticated bool
+- managementRole bool
 
 +getUserID()
 +isAuthenticated()
@@ -21,10 +21,10 @@ PumpManagement class
 
 GlobalTank class
 
-- totalGasSold
-- gasQuantityRegular
-- gasQuantityPlus
-- gasQuantitySupreme
+- totalGasSold double
+- gasQuantityRegular double
+- gasQuantityPlus double
+- gasQuantitySupreme double
 
 + updateGasQuantityInfo
 
