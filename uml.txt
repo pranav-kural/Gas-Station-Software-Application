@@ -13,6 +13,7 @@ LoginForm class
 +getUserID()
 +isAuthenticated()
 +getUserPrivilage()
++AuthenticateUser(userid, password)
 
 PumpManagement class
 
@@ -27,7 +28,7 @@ GlobalTank class
 
 + updateGasQuantityInfo
 
-Pump Class
+PumpSoftware Class
 
 + updateGasQuantity
 
