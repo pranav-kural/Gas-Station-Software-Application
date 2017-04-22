@@ -32,3 +32,14 @@ PumpSoftware Class
 
 + updateGasQuantity
 
+
+db
+
++getGasPrices
++getGasQuantity
++updateGasQuantity
++updateGasPrices
++updateGasPrice(Gas.TYPE)
++updateGasQuantity(Gas.TYPE)
+
++ getUserDetails(userid)
