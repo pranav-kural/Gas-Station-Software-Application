@@ -37,6 +37,43 @@ public class db {
     } // connectionWithDB
 
     /**
+     * Get user details for a specific user from the databse
+     * @param userid id of the user for which the data needs to be retrieved
+     * @return the user data
+     */
+    public static String[] getUserDetails(String userid) {
+
+        try {
+
+            // get the user data from database running the SQL query
+            getDataFromDB("SELECT * FROM tblUsers WHERE userid = " + userid);
+
+            // get the number of column to iterate over
+            int colCount = resultSet.getMetaData().getColumnCount();
+
+            // Array to hold to data retrieved
+            String[] userData = new String[colCount];
+
+            // Set the resultSet to first row retrieved
+            resultSet.next();
+
+            // Iterate over user data and add to the userData array
+            for (int i = 1; i <= colCount; i++) {
+                userData[i-1] = resultSet.getObject(i).toString();
+            }
+
+            // return the user data
+            return userData;
+
+        } catch (Exception e) {
+            handleExceptions(e.getMessage());
+            return null; // if error in retrieving user data
+        }
+
+
+    }
+
+    /**
      * Get the prices of the gases from the tblGases
      * @return list of gas prices
      */
