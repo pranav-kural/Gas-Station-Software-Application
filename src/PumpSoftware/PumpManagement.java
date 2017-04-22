@@ -3,6 +3,7 @@ package PumpSoftware;
 // import the services to work with Pump's database
 import PumpDB.db;
 
+import javax.swing.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Pump Management class to manage the prices of the gases
  */
-public class PumpManagement {
+public class PumpManagement extends JPanel{
 
     // gas price variables
     private double regularPrice;
@@ -20,7 +21,12 @@ public class PumpManagement {
     // constructor
     public PumpManagement() {
         // get the prices of the gases
-        getGasPrices();
+        //getGasPrices();
+        generateGUI();
+    }
+
+    private void generateGUI() {
+        add(new JLabel("Success!"));
     }
 
     // get gas prices from the database
