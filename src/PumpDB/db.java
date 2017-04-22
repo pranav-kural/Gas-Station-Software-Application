@@ -1,8 +1,12 @@
 package PumpDB;
 
 import java.sql.*;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+// Utility class to handle exceptions
+import Utilities.ExceptionHandler;
 
 /**
  * Database class to retrieve and write data to/from database
@@ -36,13 +40,13 @@ public class db {
      * Get the prices of the gases from the tblGases
      * @return list of gas prices
      */
-    private static List<Double> getGasPrices() {
+    public static ArrayList<Double> getGasPrices() {
 
         // initialize the gasPrices array
-        List<Double> gasPrices = null;
+        ArrayList<Double> gasPrices = new ArrayList<>();
 
         // SQL Query to get the gas prices
-        final String QRY = "SELECT gasPrices FROM tblGases";
+        final String QRY = "SELECT gasPrice FROM tblGases ORDER BY 1";
 
         try {
 
@@ -85,7 +89,7 @@ public class db {
     } // closeTheConn
 
     private static void handleExceptions(String message) {
-        System.out.println(message);
+        ExceptionHandler.printOut(message);
     }  // handleExceptions
 
 }
