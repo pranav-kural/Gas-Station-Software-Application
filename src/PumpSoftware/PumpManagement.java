@@ -4,6 +4,7 @@ package PumpSoftware;
 import PumpDB.db;
 
 import javax.swing.*;
+import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,23 @@ public class PumpManagement extends JPanel{
     private double plusPrice;
     private double supremePrice;
 
+    // panels
+    private JPanel pnlCenterMain, pnlCenterUpper, pnlCenterLower;
+
+    // labels
+    private JLabel lblRegular = new JLabel("Regular: "),
+                   lblPlus    = new JLabel("Plus: "),
+                   lblSupreme = new JLabel("Supreme");
+
+    // text fields
+    private JTextField txtRegular = new JTextField(10),
+                       txtPlus    = new JTextField(10),
+                       txtSupreme = new JTextField(10);
+
+    // buttons
+    private JButton btnSave   = new JButton("Save"),
+                    btnCancel = new JButton("Cancel");
+
     // constructor
     public PumpManagement() {
         // get the prices of the gases
@@ -27,6 +45,32 @@ public class PumpManagement extends JPanel{
 
     private void generateGUI() {
         add(new JLabel("Success!"));
+
+        setLayout(new BorderLayout());
+
+        // Center Upper Panel
+        pnlCenterUpper = new JPanel();
+        pnlCenterUpper.setLayout(new GridLayout(3, 2));
+        pnlCenterUpper.add(lblRegular);
+        pnlCenterUpper.add(txtRegular);
+        pnlCenterUpper.add(lblPlus);
+        pnlCenterUpper.add(txtPlus);
+        pnlCenterUpper.add(lblSupreme);
+        pnlCenterUpper.add(txtSupreme);
+
+        // Center Lower Panel
+        pnlCenterLower = new JPanel();
+        pnlCenterLower.setLayout(new FlowLayout());
+        pnlCenterLower.add(btnSave);
+        pnlCenterLower.add(btnCancel);
+
+        // Center Main Panel
+        pnlCenterMain = new JPanel();
+        pnlCenterMain.add(pnlCenterUpper, BorderLayout.NORTH);
+        pnlCenterMain.add(pnlCenterLower, BorderLayout.SOUTH);
+
+        add(pnlCenterMain, BorderLayout.CENTER);
+
     }
 
     // get gas prices from the database
