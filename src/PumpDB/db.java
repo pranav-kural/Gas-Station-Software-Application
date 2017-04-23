@@ -110,6 +110,43 @@ public class db {
         return gasPrices;
     } // getGasPrices
 
+    /**
+     * Get the prices of the gases from the tblGases
+     * @return list of gas prices
+     */
+    public static ArrayList<Double> getGasQuantity() {
+
+        // initialize an array to store quantity data
+        ArrayList<Double> gasQuantity = new ArrayList<>();
+
+        // SQL Query to get the gas quantity
+        final String QRY = "SELECT gasQuantity FROM tblGases ORDER BY gasID";
+
+        try {
+
+            // Get the gas quantity data
+            getDataFromDB(QRY);
+
+            // while loop to iterate through the result set
+            while (resultSet.next()) {
+                // populate the gasQuantity array with the quantity values obtained
+                try {
+                    gasQuantity.add(Double.parseDouble(resultSet.getObject(1).toString()));
+                } catch (NumberFormatException | NullPointerException e) {
+                    handleExceptions("Error parsing quantity data retrieved from database to double. Error info: " + e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            handleExceptions("Error connecting to the database or executing the query. Error Info: " + e.getMessage());
+        } finally {
+            // close the connection
+            closeTheConn();
+        }
+
+        // return the retrieved gas prices
+        return gasQuantity;
+    } // getGasPrices
+
     // Close the database connection
     private static void closeTheConn() {
         try {
