@@ -59,10 +59,10 @@ public class PumpManagement extends JPanel{
         txtPlus.setFont(defaultFont);
         txtSupreme.setFont(defaultFont);
 
-        // Center Upper Panel
+        // North Panel
         pnlNorth = new JPanel();
         pnlNorth.setLayout(new GridLayout(3, 2));
-        pnlNorth.setBorder(new EmptyBorder(10, 50, 10, 50));
+        pnlNorth.setBorder(new EmptyBorder(70, 50, 10, 50));
         pnlNorth.add(lblRegular);
         pnlNorth.add(txtRegular);
         pnlNorth.add(lblPlus);
@@ -70,14 +70,14 @@ public class PumpManagement extends JPanel{
         pnlNorth.add(lblSupreme);
         pnlNorth.add(txtSupreme);
 
-        // Center Lower Panel
+        // South Panel
         pnlSouth = new JPanel();
         pnlSouth.setLayout(new FlowLayout());
         pnlSouth.setBorder(new EmptyBorder(10, 50, 10, 50));
         pnlSouth.add(btnSave);
         pnlSouth.add(btnCancel);
 
-        // Center Main Panel
+        // Main Panel
         pnlMain = new JPanel();
         pnlMain.add(pnlNorth, BorderLayout.NORTH);
         pnlMain.add(pnlSouth, BorderLayout.SOUTH);
