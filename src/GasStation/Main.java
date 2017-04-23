@@ -14,8 +14,6 @@ public class Main {
         // Create an instance of the login form
         LoginForm loginForm = new LoginForm();
 
-        PumpManagement pumpManagement = new PumpManagement();
-
     }
 
 }

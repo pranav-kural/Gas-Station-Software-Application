@@ -11,20 +11,20 @@ public class Pump extends JFrame {
     // reference to the login form (parent form)
     public LoginForm loginForm;
 
+    // Pump constructor
     public Pump(LoginForm loginForm) {
+        // set the parent form reference
         this.loginForm = loginForm;
+        // generate the Pump GUI
         generateGUI();
         setTitle("Pump System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-<<<<<<< HEAD
         setSize(600, 500);
-=======
-        setSize(450, 250);
->>>>>>> 5226a750e7239b719f9743d9c55e0816797ac032
         setLocationRelativeTo(null); // center location for form
-        setVisible(true);
+        setVisible(true); // show the Pump System GUI
     }
 
+    // Generate the Pump UI
     private void generateGUI() {
 
         // initialize the tab container
