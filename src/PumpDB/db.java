@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // Utility class to handle exceptions
+import PumpSoftware.PumpManagement;
 import Utilities.ExceptionHandler;
 
 /**
@@ -109,6 +110,35 @@ public class db {
         // return the retrieved gas prices
         return gasPrices;
     } // getGasPrices
+
+    /**
+     * Get the prices of the gases from the tblGases
+     * @return list of gas prices
+     */
+    public static boolean updateGasPrices() {
+
+        // SQL Query to get the gas prices
+        final String QRY = "UPDATE tblGases SET gasPrice = ? WHERE gasName = ?";
+
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement(QRY);
+
+
+        }
+        catch (Exception e)
+        {
+            handleExceptions("Error connecting to the database or executing the query. Error Info: " + e.getMessage());
+        }
+        finally
+        {
+            // close the connection
+            closeTheConn();
+        }
+
+
+        return true;
+    } // updateGasPrices
 
     // Close the database connection
     private static void closeTheConn() {

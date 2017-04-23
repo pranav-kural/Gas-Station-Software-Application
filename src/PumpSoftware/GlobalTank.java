@@ -101,6 +101,7 @@ public class GlobalTank extends JPanel {
                     }
                 }
         );
+
         pnlLowerSouth1.setBorder(BorderFactory.createRaisedBevelBorder());
         pnlSouthMain.add(pnlLowerSouth1, BorderLayout.SOUTH);
         pnlLowerSouth1.add(btnExit);
