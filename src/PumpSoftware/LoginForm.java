@@ -129,9 +129,7 @@ public class LoginForm extends JFrame {
                 // check and set if the user has managerial privileges or not
                 this.managerial_priviligies = (userData[2].equalsIgnoreCase("y"));
                 // Create a new instance of the Pump System which the logged in user can work on
-                Pump pump = new Pump(this);
-                // set this login form as a reference to the next form
-                //pump.loginForm = this;
+                Pump pump = new Pump(this); // pass this form as the parent form reference to pump form
                 // hide the login form
                 setVisible(false);
 

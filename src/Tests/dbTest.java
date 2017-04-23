@@ -5,6 +5,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -24,9 +26,20 @@ public class dbTest {
         // get user details for user 10000
         String[] userDataRetieved = db.getUserDetails("10000");
         // User data to be matched with
-        String[] actualUserData = { "10000", "123", "n" };
+        String[] expectedUserData = { "10000", "123", "n" };
         // Match the user data
-        assertArrayEquals(userDataRetieved, actualUserData);
+        assertArrayEquals(expectedUserData, userDataRetieved);
+    }
+
+    @Test
+    public void getGasQuantity() throws Exception {
+        // get user details for user 10000
+        Double[] gasQuanitiesRetrieved = db.getGasQuantity().toArray(new Double[3]);
+
+        // User data to be matched with
+        Double[] excpectedGasQuanities = { 1000.0, 1000.0, 1000.0 };
+        // Match the user data
+        assertEquals(excpectedGasQuanities, gasQuanitiesRetrieved);
     }
 
     @Test
