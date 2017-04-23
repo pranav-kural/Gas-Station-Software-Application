@@ -98,7 +98,7 @@ public class PumpManagement extends JPanel{
         ArrayList<Double> gasPrices = db.getGasPrices();
 
         // set the gas prices
-        regularPrice = gasPrices.get(2);    // price for regular gas type
+        regularPrice = gasPrices.get(0);    // price for regular gas type
         plusPrice = gasPrices.get(1);       // price for plus gas type
         supremePrice = gasPrices.get(2);    // price for plus
 
