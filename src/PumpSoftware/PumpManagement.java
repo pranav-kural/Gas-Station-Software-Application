@@ -4,6 +4,8 @@ package PumpSoftware;
 import PumpDB.db;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,25 @@ public class PumpManagement extends JPanel{
     private double plusPrice;
     private double supremePrice;
 
+    // panels
+    private JPanel pnlMain, pnlNorth, pnlSouth;
+
+    // labels
+    private JLabel lblRegular = new JLabel("Regular: "),
+                   lblPlus    = new JLabel("Plus: "),
+                   lblSupreme = new JLabel("Supreme: ");
+
+    // text fields
+    private JTextField txtRegular = new JTextField(10),
+                       txtPlus    = new JTextField(10),
+                       txtSupreme = new JTextField(10);
+
+    // buttons
+    private JButton btnSave   = new JButton("Save"),
+                    btnCancel = new JButton("Cancel");
+
+    private Font defaultFont = new Font("Segeo UI", Font.BOLD, 14);
+
     // constructor
     public PumpManagement() {
         // get the prices of the gases
@@ -27,6 +48,42 @@ public class PumpManagement extends JPanel{
 
     private void generateGUI() {
         add(new JLabel("Success!"));
+
+        setLayout(new BorderLayout());
+
+        lblRegular.setFont(defaultFont);
+        lblPlus.setFont(defaultFont);
+        lblSupreme.setFont(defaultFont);
+
+        txtRegular.setFont(defaultFont);
+        txtPlus.setFont(defaultFont);
+        txtSupreme.setFont(defaultFont);
+
+        // Center Upper Panel
+        pnlNorth = new JPanel();
+        pnlNorth.setLayout(new GridLayout(3, 2));
+        pnlNorth.setBorder(new EmptyBorder(10, 50, 10, 50));
+        pnlNorth.add(lblRegular);
+        pnlNorth.add(txtRegular);
+        pnlNorth.add(lblPlus);
+        pnlNorth.add(txtPlus);
+        pnlNorth.add(lblSupreme);
+        pnlNorth.add(txtSupreme);
+
+        // Center Lower Panel
+        pnlSouth = new JPanel();
+        pnlSouth.setLayout(new FlowLayout());
+        pnlSouth.setBorder(new EmptyBorder(10, 50, 10, 50));
+        pnlSouth.add(btnSave);
+        pnlSouth.add(btnCancel);
+
+        // Center Main Panel
+        pnlMain = new JPanel();
+        pnlMain.add(pnlNorth, BorderLayout.NORTH);
+        pnlMain.add(pnlSouth, BorderLayout.SOUTH);
+
+        add(pnlMain);
+
     }
 
     // get gas prices from the database
