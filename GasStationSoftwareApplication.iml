@@ -19,7 +19,7 @@
     <orderEntry type="module-library" exported="">
       <library name="mysql-connector-java-5.1.40-bin.jar">
         <CLASSES>
-          <root url="file://$USER_HOME$/Downloads/chrome_downloads/mysql-connector-java-5.1.40-bin.jar" />
+          <root url="jar://$MODULE_DIR$/dependencies/mysql-connector-java-5.1.41-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

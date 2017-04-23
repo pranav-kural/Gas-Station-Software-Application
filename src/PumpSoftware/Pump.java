@@ -9,7 +9,7 @@ public class Pump extends JFrame {
         generateGUI();
         setTitle("Pump System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(450, 300);
+        setSize(450, 250);
         setLocationRelativeTo(null); // center location for form
         setVisible(true);
     }

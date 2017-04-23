@@ -4,6 +4,7 @@ package PumpSoftware;
 import PumpDB.db;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -20,12 +21,12 @@ public class PumpManagement extends JPanel{
     private double supremePrice;
 
     // panels
-    private JPanel pnlCenterMain, pnlCenterUpper, pnlCenterLower;
+    private JPanel pnlMain, pnlNorth, pnlSouth;
 
     // labels
     private JLabel lblRegular = new JLabel("Regular: "),
                    lblPlus    = new JLabel("Plus: "),
-                   lblSupreme = new JLabel("Supreme");
+                   lblSupreme = new JLabel("Supreme: ");
 
     // text fields
     private JTextField txtRegular = new JTextField(10),
@@ -35,6 +36,8 @@ public class PumpManagement extends JPanel{
     // buttons
     private JButton btnSave   = new JButton("Save"),
                     btnCancel = new JButton("Cancel");
+
+    private Font defaultFont = new Font("Segeo UI", Font.BOLD, 14);
 
     // constructor
     public PumpManagement() {
@@ -48,28 +51,38 @@ public class PumpManagement extends JPanel{
 
         setLayout(new BorderLayout());
 
+        lblRegular.setFont(defaultFont);
+        lblPlus.setFont(defaultFont);
+        lblSupreme.setFont(defaultFont);
+
+        txtRegular.setFont(defaultFont);
+        txtPlus.setFont(defaultFont);
+        txtSupreme.setFont(defaultFont);
+
         // Center Upper Panel
-        pnlCenterUpper = new JPanel();
-        pnlCenterUpper.setLayout(new GridLayout(3, 2));
-        pnlCenterUpper.add(lblRegular);
-        pnlCenterUpper.add(txtRegular);
-        pnlCenterUpper.add(lblPlus);
-        pnlCenterUpper.add(txtPlus);
-        pnlCenterUpper.add(lblSupreme);
-        pnlCenterUpper.add(txtSupreme);
+        pnlNorth = new JPanel();
+        pnlNorth.setLayout(new GridLayout(3, 2));
+        pnlNorth.setBorder(new EmptyBorder(10, 50, 10, 50));
+        pnlNorth.add(lblRegular);
+        pnlNorth.add(txtRegular);
+        pnlNorth.add(lblPlus);
+        pnlNorth.add(txtPlus);
+        pnlNorth.add(lblSupreme);
+        pnlNorth.add(txtSupreme);
 
         // Center Lower Panel
-        pnlCenterLower = new JPanel();
-        pnlCenterLower.setLayout(new FlowLayout());
-        pnlCenterLower.add(btnSave);
-        pnlCenterLower.add(btnCancel);
+        pnlSouth = new JPanel();
+        pnlSouth.setLayout(new FlowLayout());
+        pnlSouth.setBorder(new EmptyBorder(10, 50, 10, 50));
+        pnlSouth.add(btnSave);
+        pnlSouth.add(btnCancel);
 
         // Center Main Panel
-        pnlCenterMain = new JPanel();
-        pnlCenterMain.add(pnlCenterUpper, BorderLayout.NORTH);
-        pnlCenterMain.add(pnlCenterLower, BorderLayout.SOUTH);
+        pnlMain = new JPanel();
+        pnlMain.add(pnlNorth, BorderLayout.NORTH);
+        pnlMain.add(pnlSouth, BorderLayout.SOUTH);
 
-        add(pnlCenterMain, BorderLayout.CENTER);
+        add(pnlMain);
 
     }
 
