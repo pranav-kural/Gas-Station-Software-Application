@@ -11,18 +11,8 @@ public class Main {
   // Main method
     public static void main(String[] args) {
 
-        // Instantiate a new instance of the PumpManagement Class to test the printing out of gas prices
-        //PumpManagement pumpManagementHub = new PumpManagement();
-
-        // print out the gas prices information
-        //System.out.println(pumpManagementHub);
-
         // Create an instance of the login form
         LoginForm loginForm = new LoginForm();
-
-
-
-
 
     }
 
