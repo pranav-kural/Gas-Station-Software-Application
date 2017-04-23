@@ -115,25 +115,24 @@ public class db {
      * Get the prices of the gases from the tblGases
      * @return list of gas prices
      */
-<<<<<<< HEAD
     public static boolean updateGasPrices() {
 
         // SQL Query to get the gas prices
         final String QRY = "UPDATE tblGases SET gasPrice = ? WHERE gasName = ?";
 
-        try
-        {
+        try {
             PreparedStatement statement = connection.prepareStatement(QRY);
 
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             handleExceptions("Error connecting to the database or executing the query. Error Info: " + e.getMessage());
+        } finally {
+
         }
-        finally
-        {
-=======
+
+        return true;
+    }// updateGasPrices
+
     public static ArrayList<Double> getGasQuantity() {
 
         // initialize an array to store quantity data
@@ -143,7 +142,6 @@ public class db {
         final String QRY = "SELECT gasQuantity FROM tblGases ORDER BY gasID";
 
         try {
-
             // Get the gas quantity data
             getDataFromDB(QRY);
 
@@ -159,20 +157,13 @@ public class db {
         } catch (Exception e) {
             handleExceptions("Error connecting to the database or executing the query. Error Info: " + e.getMessage());
         } finally {
->>>>>>> b5460918d260c00ae693d49963a8ab835d0c8454
+
             // close the connection
             closeTheConn();
         }
-
-<<<<<<< HEAD
-
-        return true;
-    } // updateGasPrices
-=======
         // return the retrieved gas prices
         return gasQuantity;
     } // getGasPrices
->>>>>>> b5460918d260c00ae693d49963a8ab835d0c8454
 
     // Close the database connection
     private static void closeTheConn() {
