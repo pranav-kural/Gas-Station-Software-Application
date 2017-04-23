@@ -6,6 +6,7 @@ import PumpDB.db;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,10 +60,10 @@ public class PumpManagement extends JPanel{
         txtPlus.setFont(defaultFont);
         txtSupreme.setFont(defaultFont);
 
-        // Center Upper Panel
+        // North Panel
         pnlNorth = new JPanel();
         pnlNorth.setLayout(new GridLayout(3, 2));
-        pnlNorth.setBorder(new EmptyBorder(10, 50, 10, 50));
+        pnlNorth.setBorder(new EmptyBorder(70, 50, 10, 50));
         pnlNorth.add(lblRegular);
         pnlNorth.add(txtRegular);
         pnlNorth.add(lblPlus);
@@ -70,19 +71,23 @@ public class PumpManagement extends JPanel{
         pnlNorth.add(lblSupreme);
         pnlNorth.add(txtSupreme);
 
-        // Center Lower Panel
+        // South Panel
         pnlSouth = new JPanel();
         pnlSouth.setLayout(new FlowLayout());
         pnlSouth.setBorder(new EmptyBorder(10, 50, 10, 50));
         pnlSouth.add(btnSave);
+
+
         pnlSouth.add(btnCancel);
 
-        // Center Main Panel
+        // Main Panel
         pnlMain = new JPanel();
+        pnlMain.setBorder(new EmptyBorder(10, 50, 10, 50));
         pnlMain.add(pnlNorth, BorderLayout.NORTH);
         pnlMain.add(pnlSouth, BorderLayout.SOUTH);
 
         add(pnlMain);
+        getGasPrices();
 
     }
 
@@ -97,6 +102,9 @@ public class PumpManagement extends JPanel{
         plusPrice = gasPrices.get(1);       // price for plus gas type
         supremePrice = gasPrices.get(2);    // price for plus
 
+        txtRegular.setText(Double.toString(regularPrice));
+        txtPlus.setText(Double.toString(plusPrice));
+        txtSupreme.setText(Double.toString(supremePrice));
     }
 
     // Override toString method to print out gas information
@@ -110,4 +118,5 @@ public class PumpManagement extends JPanel{
                 "Plus", df.format(plusPrice),
                 "Supreme", df.format(supremePrice));
     }
+
 }
