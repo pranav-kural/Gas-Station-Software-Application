@@ -1,5 +1,7 @@
 package PumpSoftware;
 
+import PumpDB.db;
+
 import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.*;
@@ -104,7 +106,38 @@ public class GlobalTank extends JPanel {
         pnlLowerSouth1.setBorder(BorderFactory.createRaisedBevelBorder());
         pnlSouthMain.add(pnlLowerSouth1, BorderLayout.SOUTH);
         pnlLowerSouth1.add(btnExit);
-        setVisible(true);
+
+
+        // Display the gas prices information
+        displayGasPriceInfo();
+
+        // fill gas quantity data
+        displayGasQuantityInfo();
+
     }//end of constructor
+
+    // Display the gas prices in the text boxes
+    private void displayGasPriceInfo() {
+        // get the gas prices
+        Double[] gasPrices = db.getGasPrices().toArray(new Double[3]);
+
+        // fill the gas prices to the text boxes
+        this.txtRegular1.setText(String.valueOf(gasPrices[0]));
+        this.txtPlus1.setText(String.valueOf(gasPrices[1]));
+        this.txtSupreme1.setText(String.valueOf(gasPrices[2]));
+    }
+
+    // Display the gas quantities in the text boxes
+    private void displayGasQuantityInfo() {
+
+        // get the gas quantity info
+        Double[] gasQuantities = db.getGasQuantity().toArray(new Double[3]);
+
+        // fill the data to text boxes
+        this.txtRegular2.setText(String.valueOf(gasQuantities[0]));
+        this.txtPlus2.setText(String.valueOf(gasQuantities[1]));
+        this.txtSupreme2.setText(String.valueOf(gasQuantities[2]));
+
+    }
 
 }//end of class
