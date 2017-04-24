@@ -1,6 +1,6 @@
 package PumpSoftware;
 
-// import the services to work with Pump's database
+// import the services to work with PumpSystem's database
 import PumpDB.db;
 import Utilities.Services;
 
@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 /**
  * Login Form class to display a login form
  * Without passing the login authentication
- * user won't be able to see or access Pump System
+ * user won't be able to see or access PumpSystem System
  */
 public class LoginForm extends JFrame {
 
@@ -128,8 +128,8 @@ public class LoginForm extends JFrame {
             if (userData[1].equals(password)) {
                 // check and set if the user has managerial privileges or not
                 this.managerial_priviligies = (userData[2].equalsIgnoreCase("y"));
-                // Create a new instance of the Pump System which the logged in user can work on
-                Pump pump = new Pump(this); // pass this form as the parent form reference to pump form
+                // Create a new instance of the PumpSystem System which the logged in user can work on
+                PumpSystem pumpSystem = new PumpSystem(this); // pass this form as the parent form reference to pumpSystem form
                 // hide the login form
                 setVisible(false);
 

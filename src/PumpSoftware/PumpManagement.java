@@ -1,6 +1,6 @@
 package PumpSoftware;
 
-// import the services to work with Pump's database
+// import the services to work with PumpSystem's database
 import PumpDB.db;
 import javafx.beans.binding.DoubleExpression;
 
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * Pump Management class to manage the prices of the gases
+ * PumpSystem Management class to manage the prices of the gases
  */
 public class PumpManagement extends JPanel{
 
@@ -51,7 +51,7 @@ public class PumpManagement extends JPanel{
         generateGUI();
     }
 
-    // this method is used to create the GUI for Pump Mngt Tab
+    // this method is used to create the GUI for PumpSystem Mngt Tab
     private void generateGUI() {
         add(new JLabel("Success!"));
 
