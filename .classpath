@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="var" path="USER_HOME/Downloads/chrome_downloads/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="dependencies/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry exported="true" kind="lib" path="dependencies/junit-4.12.jar"/>
 	<classpathentry exported="true" kind="lib" path="dependencies/hamcrest-core-1.3.jar"/>
 	<classpathentry kind="output" path="out/production/GasStationSoftwareApplication"/>
