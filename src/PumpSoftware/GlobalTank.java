@@ -8,9 +8,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.EmptyBorder;
 
-/**
- * Global tank Form class to display gas sold and available
- */
 public class GlobalTank extends JPanel {
     private JLabel lblTitle1, lblRegular1, lblPlus1, lblSupreme1,lblTitle2, lblRegular2, lblPlus2, lblSupreme2;
     private JTextField txtRegular1, txtPlus1, txtSupreme1, txtRegular2, txtPlus2, txtSupreme2;
@@ -115,6 +112,12 @@ public class GlobalTank extends JPanel {
         pnlSouthMain.add(pnlLowerSouth1, BorderLayout.SOUTH);
         pnlLowerSouth1.add(btnExit);
         setVisible(true);
+
+        // Display the gas prices information
+        displayGasPriceInfo();
+
+        // fill gas quantity data
+        displayGasQuantityInfo();
     }//end of constructor
 
     // Display the gas prices in the text boxes
@@ -127,10 +130,6 @@ public class GlobalTank extends JPanel {
         this.txtPlus1.setText(String.valueOf(gasPrices[1]));
         this.txtSupreme1.setText(String.valueOf(gasPrices[2]));
     }
-    public static void main(String[] args){
-        new GlobalTank();
-
-    }//end main
 
     // Display the gas quantities in the text boxes
     private void displayGasQuantityInfo() {
@@ -146,3 +145,4 @@ public class GlobalTank extends JPanel {
     }
 
 }//end of class
+

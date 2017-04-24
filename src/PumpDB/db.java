@@ -125,7 +125,14 @@ public class db {
 
             statement.setDouble(1, regular);
             statement.setString(2, "Regular");
+            statement.executeUpdate();
 
+            statement.setDouble(1, plus);
+            statement.setString(2, "Plus");
+            statement.executeUpdate();
+
+            statement.setDouble(1, supreme);
+            statement.setString(2, "Supreme");
             statement.executeUpdate();
 
         } catch (Exception e) {
