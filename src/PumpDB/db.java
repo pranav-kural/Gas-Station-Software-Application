@@ -112,10 +112,10 @@ public class db {
     } // getGasPrices
 
     /**
-     * Get the prices of the gases from the tblGases
-     * @return list of gas prices
+     * Update the prices of the gases from the tblGases
+     * @return
      */
-    public static boolean updateGasPrices() {
+    public static boolean updateGasPrices(Double regular, Double plus, Double supreme) {
 
         // SQL Query to get the gas prices
         final String QRY = "UPDATE tblGases SET gasPrice = ? WHERE gasName = ?";
@@ -123,11 +123,16 @@ public class db {
         try {
             PreparedStatement statement = connection.prepareStatement(QRY);
 
+            statement.setDouble(1, regular);
+            statement.setString(2, "Regular");
+
+            statement.executeUpdate();
 
         } catch (Exception e) {
             handleExceptions("Error connecting to the database or executing the query. Error Info: " + e.getMessage());
         } finally {
-
+            // close the connection
+            closeTheConn();
         }
 
         return true;
@@ -157,7 +162,6 @@ public class db {
         } catch (Exception e) {
             handleExceptions("Error connecting to the database or executing the query. Error Info: " + e.getMessage());
         } finally {
-
             // close the connection
             closeTheConn();
         }

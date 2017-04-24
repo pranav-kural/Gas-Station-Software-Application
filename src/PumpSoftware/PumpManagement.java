@@ -46,6 +46,7 @@ public class PumpManagement extends JPanel{
         // get the prices of the gases
         //getGasPrices();
         generateGUI();
+
     }
 
     private void generateGUI() {
@@ -90,7 +91,7 @@ public class PumpManagement extends JPanel{
                     public void actionPerformed(ActionEvent event){
                         if(Double.valueOf(regularPrice)!= Double.valueOf(txtRegular.getText()) || Double.valueOf(plusPrice)!= Double.valueOf(txtPlus.getText()) || Double.valueOf(supremePrice)!= Double.valueOf(txtSupreme.getText()))
                         {
-
+                            updatePrices();
                         }
                     }
                 }
@@ -136,22 +137,25 @@ public class PumpManagement extends JPanel{
         txtRegular.setText(Double.toString(regularPrice));
         txtPlus.setText(Double.toString(plusPrice));
         txtSupreme.setText(Double.toString(supremePrice));
-    }
+
+    } // end getGasPrices
 
     // update gas prices from the database
-    private void updateGasPrices(Double regular, Double plus, Double supreme) {
+    private void updatePrices() {
+
+        db.updateGasPrices(Double.parseDouble(txtRegular.getText()), Double.parseDouble(txtPlus.getText()), Double.parseDouble(txtSupreme.getText()));
 
         ArrayList<Double> updatePrices = new ArrayList<>();
 
-        regular = Double.parseDouble(txtRegular.getText());
-        plus = Double.parseDouble(txtPlus.getText());
-        supreme = Double.parseDouble(txtSupreme.getText());
+        Double regular = Double.parseDouble(txtRegular.getText());
+        Double plus = Double.parseDouble(txtPlus.getText());
+        Double supreme = Double.parseDouble(txtSupreme.getText());
 
         updatePrices.add(regular);
         updatePrices.add(plus);
         updatePrices.add(supreme);
 
-    }
+    } // end updateGasPrices
 
     // Override toString method to print out gas information
     @Override
