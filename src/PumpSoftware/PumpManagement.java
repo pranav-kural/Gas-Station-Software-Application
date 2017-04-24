@@ -2,6 +2,7 @@ package PumpSoftware;
 
 // import the services to work with Pump's database
 import PumpDB.db;
+import javafx.beans.binding.DoubleExpression;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,6 +12,7 @@ import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Pump Management class to manage the prices of the gases
@@ -39,6 +41,7 @@ public class PumpManagement extends JPanel{
     private JButton btnUpdate   = new JButton("Update"),
                     btnCancel = new JButton("Cancel");
 
+    // instantiate the variable to set form
     private Font defaultFont = new Font("Segeo UI", Font.BOLD, 16);
 
     // constructor
@@ -46,12 +49,13 @@ public class PumpManagement extends JPanel{
         // get the prices of the gases
         //getGasPrices();
         generateGUI();
-
     }
 
+    // this method is used to create the GUI for Pump Mngt Tab
     private void generateGUI() {
         add(new JLabel("Success!"));
 
+        // set the main layout
         setLayout(new BorderLayout());
 
         // set font of labels
@@ -63,7 +67,7 @@ public class PumpManagement extends JPanel{
         txtPlus.setFont(defaultFont);
         txtSupreme.setFont(defaultFont);
 
-        // set size
+        // set size of txtFields
         txtRegular.setPreferredSize(new Dimension(100, 35));
         txtPlus.setPreferredSize(new Dimension(100, 35));
         txtSupreme.setPreferredSize(new Dimension(100, 35));
@@ -85,27 +89,42 @@ public class PumpManagement extends JPanel{
         pnlSouth.setLayout(new FlowLayout());
         pnlSouth.setBorder(new EmptyBorder(20, 50, 10, 50));
         pnlSouth.add(btnUpdate);
+
+        // Event handler for update button
         btnUpdate.addActionListener(
                 new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent event){
-                        if(Double.valueOf(regularPrice)!= Double.valueOf(txtRegular.getText()) || Double.valueOf(plusPrice)!= Double.valueOf(txtPlus.getText()) || Double.valueOf(supremePrice)!= Double.valueOf(txtSupreme.getText()))
+                        try
                         {
-                            updatePrices();
-                            JOptionPane.showMessageDialog(null, "The price was successfully updated.", "Update successfully!", JOptionPane.INFORMATION_MESSAGE);
+                            if(regularPrice != Double.parseDouble(txtRegular.getText()) || plusPrice != Double.parseDouble(txtPlus.getText()) || supremePrice != Double.parseDouble(txtSupreme.getText()))
+                            {
+                                // call the update price method which is connected to the database
+                                updatePrices();
+                                // display user success message
+                                JOptionPane.showMessageDialog(null, "The price was successfully updated.", "Update successfully!", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            else {
+                                //btnUpdate.setEnabled(false);
+                                JOptionPane.showMessageDialog(null, "Please update the price.", "Update Price", JOptionPane.WARNING_MESSAGE);
+                            }
                         }
-                        else{
-                            JOptionPane.showMessageDialog(null, "Please update the price.", "Update Price", JOptionPane.WARNING_MESSAGE);
+                        catch (Exception error)
+                        {
+
                         }
+
                     }
                 }
         );
 
         pnlSouth.add(btnCancel);
+        // Event handler for cancel button to exit the program
         btnCancel.addActionListener(
                 new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent event){
+                        // display the user confirm message then exit if OK
                         if(JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel?", "Cancel?", JOptionPane.YES_NO_OPTION)==0)
                         {
                             System.exit(0);
@@ -124,7 +143,6 @@ public class PumpManagement extends JPanel{
 
         // calling getGasPrice method from db class
         getGasPrices();
-
     }
 
     // get gas prices from the database
@@ -147,14 +165,18 @@ public class PumpManagement extends JPanel{
     // update gas prices from the database
     private void updatePrices() {
 
+        // call the method from db class & populate with values
         db.updateGasPrices(Double.parseDouble(txtRegular.getText()), Double.parseDouble(txtPlus.getText()), Double.parseDouble(txtSupreme.getText()));
 
+        // create an ArrayList of Double to store price
         ArrayList<Double> updatePrices = new ArrayList<>();
 
+        // set the variable's = to the text in textFields & also parse to Double
         Double regular = Double.parseDouble(txtRegular.getText());
         Double plus = Double.parseDouble(txtPlus.getText());
         Double supreme = Double.parseDouble(txtSupreme.getText());
 
+        // add the values to the ArrayList
         updatePrices.add(regular);
         updatePrices.add(plus);
         updatePrices.add(supreme);
@@ -173,4 +195,4 @@ public class PumpManagement extends JPanel{
                 "Supreme", df.format(supremePrice));
     }
 
-}
+} // end of class
