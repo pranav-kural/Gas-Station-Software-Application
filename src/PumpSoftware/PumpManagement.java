@@ -5,6 +5,7 @@ import PumpDB.db;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
@@ -35,10 +36,10 @@ public class PumpManagement extends JPanel{
                        txtSupreme = new JTextField(10);
 
     // buttons
-    private JButton btnSave   = new JButton("Save"),
+    private JButton btnUpdate   = new JButton("Update"),
                     btnCancel = new JButton("Cancel");
 
-    private Font defaultFont = new Font("Segeo UI", Font.BOLD, 14);
+    private Font defaultFont = new Font("Segeo UI", Font.BOLD, 16);
 
     // constructor
     public PumpManagement() {
@@ -52,17 +53,23 @@ public class PumpManagement extends JPanel{
 
         setLayout(new BorderLayout());
 
+        // set font of labels
         lblRegular.setFont(defaultFont);
         lblPlus.setFont(defaultFont);
         lblSupreme.setFont(defaultFont);
-
+        // set font of textFields
         txtRegular.setFont(defaultFont);
         txtPlus.setFont(defaultFont);
         txtSupreme.setFont(defaultFont);
 
+        // set size
+        txtRegular.setPreferredSize(new Dimension(100, 35));
+        txtPlus.setPreferredSize(new Dimension(100, 35));
+        txtSupreme.setPreferredSize(new Dimension(100, 35));
+
         // North Panel
         pnlNorth = new JPanel();
-        pnlNorth.setLayout(new GridLayout(3, 2));
+        pnlNorth.setLayout(new GridLayout(3, 2, 0, 30));
         pnlNorth.setBorder(new EmptyBorder(70, 50, 10, 50));
         pnlNorth.add(lblRegular);
         pnlNorth.add(txtRegular);
@@ -70,13 +77,14 @@ public class PumpManagement extends JPanel{
         pnlNorth.add(txtPlus);
         pnlNorth.add(lblSupreme);
         pnlNorth.add(txtSupreme);
+        pnlNorth.setBorder(new TitledBorder("Update Gas Prices"));
 
         // South Panel
         pnlSouth = new JPanel();
         pnlSouth.setLayout(new FlowLayout());
         pnlSouth.setBorder(new EmptyBorder(10, 50, 10, 50));
-        pnlSouth.add(btnSave);
-        btnSave.addActionListener(
+        pnlSouth.add(btnUpdate);
+        btnUpdate.addActionListener(
                 new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent event){
@@ -89,6 +97,17 @@ public class PumpManagement extends JPanel{
         );
 
         pnlSouth.add(btnCancel);
+        btnCancel.addActionListener(
+                new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent event){
+                        if(JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel?", "Cancel?", JOptionPane.YES_NO_OPTION)==0)
+                        {
+                            System.exit(0);
+                        }
+                    }
+                }
+        );
 
         // Main Panel
         pnlMain = new JPanel();
@@ -97,6 +116,8 @@ public class PumpManagement extends JPanel{
         pnlMain.add(pnlSouth, BorderLayout.SOUTH);
 
         add(pnlMain);
+
+        // calling getGasPrice method from db class
         getGasPrices();
 
     }
@@ -129,7 +150,6 @@ public class PumpManagement extends JPanel{
         updatePrices.add(regular);
         updatePrices.add(plus);
         updatePrices.add(supreme);
-
 
     }
 
