@@ -129,7 +129,7 @@ public class GlobalTank extends JPanel {
     }//end of constructor
 
     // Display the gas prices in the text boxes
-    private void displayGasPriceInfo() {
+    public void displayGasPriceInfo() {
         // get the gas prices
         Double[] gasPrices = db.getGasPrices().toArray(new Double[3]);
 
@@ -140,7 +140,7 @@ public class GlobalTank extends JPanel {
     }
 
     // Display the gas quantities in the text boxes
-    private void displayGasQuantityInfo() {
+    public void displayGasQuantityInfo() {
 
         // get the gas quantity info
         Double[] gasQuantities = db.getGasQuantity().toArray(new Double[3]);
