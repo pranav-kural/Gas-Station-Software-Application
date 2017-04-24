@@ -94,6 +94,14 @@ public class GlobalTank extends JPanel {
         pnlLowerSouth.add(lblSupreme2);
         pnlLowerSouth.add(txtSupreme2);
 
+        // set read-only property for txtFields
+        txtRegular1.setEditable(false);
+        txtRegular2.setEditable(false);
+        txtPlus1.setEditable(false);
+        txtPlus2.setEditable(false);
+        txtSupreme1.setEditable(false);
+        txtSupreme2.setEditable(false);
+
         //creating a another south lower panel
         pnlLowerSouth1 = new JPanel();
         btnExit = new JButton("Exit");
