@@ -104,7 +104,11 @@ public class PumpManagement extends JPanel{
                                 // display user success message
                                 JOptionPane.showMessageDialog(null, "The price was successfully updated.", "Update successfully!", JOptionPane.INFORMATION_MESSAGE);
                             }
-                            else {
+                            else if (txtRegular.getText().isEmpty() || txtPlus.getText().isEmpty() || txtSupreme.getText().isEmpty()){
+                                //btnUpdate.setEnabled(false);
+                                JOptionPane.showMessageDialog(null, "Please enter valid price.", "Invalid Price", JOptionPane.WARNING_MESSAGE);
+                            }
+                            else{
                                 //btnUpdate.setEnabled(false);
                                 JOptionPane.showMessageDialog(null, "Please update the price.", "Update Price", JOptionPane.WARNING_MESSAGE);
                             }
