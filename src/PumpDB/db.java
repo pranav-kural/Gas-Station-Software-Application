@@ -121,6 +121,10 @@ public class db {
         final String QRY = "UPDATE tblGases SET gasPrice = ? WHERE gasName = ?";
 
         try {
+
+            // setting up connection
+            connection = DriverManager.getConnection(DB_URL, "gc200333253", "3C^TL5rT");
+
             PreparedStatement statement = connection.prepareStatement(QRY);
 
             statement.setDouble(1, regular);

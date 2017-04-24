@@ -1,6 +1,5 @@
 package PumpSoftware;
 
-
 import javax.swing.*;
 
 public class Pump extends JFrame {
@@ -38,5 +37,4 @@ public class Pump extends JFrame {
         // add the tabContainer to Pump GUI
         add(tabContainer);
     }
-
 }

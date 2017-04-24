@@ -71,7 +71,7 @@ public class PumpManagement extends JPanel{
         // North Panel
         pnlNorth = new JPanel();
         pnlNorth.setLayout(new GridLayout(3, 2, 0, 30));
-        pnlNorth.setBorder(new EmptyBorder(70, 50, 10, 50));
+        pnlNorth.setBorder(new EmptyBorder(50, 50, 10, 50));
         pnlNorth.add(lblRegular);
         pnlNorth.add(txtRegular);
         pnlNorth.add(lblPlus);
@@ -83,7 +83,7 @@ public class PumpManagement extends JPanel{
         // South Panel
         pnlSouth = new JPanel();
         pnlSouth.setLayout(new FlowLayout());
-        pnlSouth.setBorder(new EmptyBorder(10, 50, 10, 50));
+        pnlSouth.setBorder(new EmptyBorder(20, 50, 10, 50));
         pnlSouth.add(btnUpdate);
         btnUpdate.addActionListener(
                 new ActionListener(){
@@ -92,6 +92,10 @@ public class PumpManagement extends JPanel{
                         if(Double.valueOf(regularPrice)!= Double.valueOf(txtRegular.getText()) || Double.valueOf(plusPrice)!= Double.valueOf(txtPlus.getText()) || Double.valueOf(supremePrice)!= Double.valueOf(txtSupreme.getText()))
                         {
                             updatePrices();
+                            JOptionPane.showMessageDialog(null, "The price was successfully updated.", "Update successfully!", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Please update the price.", "Update Price", JOptionPane.WARNING_MESSAGE);
                         }
                     }
                 }

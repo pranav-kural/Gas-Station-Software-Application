@@ -22,7 +22,7 @@ public class GlobalTank extends JPanel {
         //creating a north main panel
         pnlNorthMain = new JPanel();
         pnlNorthMain.setLayout(new BorderLayout());
-        //setting the empty border to have the entire pannel in the middle
+        //setting the empty border to have the entire panel in the middle
         pnlNorthMain.setBorder(new EmptyBorder(60, 80, 0, 80));
 
         add(pnlNorthMain, BorderLayout.NORTH);
@@ -63,7 +63,7 @@ public class GlobalTank extends JPanel {
         pnlSouthMain.setBorder(new EmptyBorder(0, 80, 60, 80));
         add(pnlSouthMain, BorderLayout.SOUTH);
 
-        ////creating a south upper panel
+        //creating a south upper panel
         pnlUpperSouth = new JPanel();
         lblTitle2 = new JLabel("Gas AVAILABLE (Litres)");
         lblTitle2.setFont(new Font("Arial", Font.BOLD, 16));
@@ -97,7 +97,7 @@ public class GlobalTank extends JPanel {
         //creating a another south lower panel
         pnlLowerSouth1 = new JPanel();
         btnExit = new JButton("Exit");
-        //add listner to exit the form
+        //add listener to exit the form
         btnExit.addActionListener(
                 new ActionListener(){
                     @Override
