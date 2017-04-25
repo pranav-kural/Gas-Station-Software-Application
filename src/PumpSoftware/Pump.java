@@ -254,7 +254,7 @@ public class Pump extends JFrame {
                     public void actionPerformed(ActionEvent event) {
                         if (JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Exit?", JOptionPane.YES_NO_OPTION) == 0) {
                             // yes=0, no=1
-                            System.exit(0);
+                            setVisible(false); // hide the form
                         }
                     }
                 }
@@ -318,6 +318,11 @@ public class Pump extends JFrame {
         txtRegular.setText(String.valueOf(gasPrices[0]));
         txtPlus.setText(String.valueOf(gasPrices[1]));
         txtSupreme.setText(String.valueOf(gasPrices[2]));
+
+        // set the textboxes to read only
+        txtRegular.setEditable(false);
+        txtPlus.setEditable(false);
+        txtSupreme.setEditable(false);
     }
 
 

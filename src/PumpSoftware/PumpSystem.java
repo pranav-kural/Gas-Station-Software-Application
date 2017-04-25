@@ -35,17 +35,20 @@ public class PumpSystem extends JFrame {
         GlobalTank globalTank = new GlobalTank();
 
         // add the tabs
-        tabContainer.addTab("PumpSystem Management", null, (loginForm.isManager() ? new PumpManagement() : new JLabel("You don't have access to this tab. You need managerial privileges to update the gas prices.", JLabel.CENTER)), "Update the gas prices.");
+        // show the Pump management tab only if the user has managerial privileges
+        if (loginForm.isManager()) {
+            tabContainer.addTab("PumpSystem Management", null, new PumpManagement(), "Update the gas prices.");
+        }
         tabContainer.addTab("Global Tank", null, globalTank, "Check the gas prices and quantity.");
         tabContainer.addTab("Launch PumpSystem", null, new JLabel("The pump will be launched soon.", JLabel.CENTER), "Fill gas.");
 
         tabContainer.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                if (tabContainer.getSelectedIndex() == 1) {
+                if (tabContainer.getSelectedIndex() == (loginForm.isManager() ? 1: 0)) {
                     globalTank.displayGasQuantityInfo();
                     globalTank.displayGasPriceInfo();
-                } else if(tabContainer.getSelectedIndex() == 2) {
+                } else if(tabContainer.getSelectedIndex() == (loginForm.isManager() ? 2: 1)) {
                     Pump pump = new Pump();
                 }
             }
