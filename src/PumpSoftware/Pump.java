@@ -270,14 +270,12 @@ public class Pump extends JFrame {
                         }
                         else if (JOptionPane.showConfirmDialog(null, "Are you sure you want to start pumping?", "Start Pumping?", JOptionPane.YES_NO_OPTION) == 0) {
                             JOptionPane.showMessageDialog(null, "Pumping has started");
-
+                            presetAmount = Double.parseDouble(lblCentreSouthMiddle.getText());
                             //changeCentOneUpperValue();
                             updateDisplayAmount();
-                            DecimalFormat df = new DecimalFormat("0.00");
-                            int value = jslSouth.getValue();
-                            presetAmount = Double.parseDouble(String.valueOf(value) + ".0");
                             pricePerLiter = Double.parseDouble(rdGroup.getSelection().getActionCommand());
-                            litreLimit = Math.round(presetAmount / (pricePerLiter * 100) * 100.0) / 100.0;
+                            Double val = Math.round(presetAmount / (pricePerLiter / 100) * 100.0) / 100.0;
+                            setLitreLimit(val);
                             runThePump();
 
                         }
@@ -310,6 +308,9 @@ public class Pump extends JFrame {
 
     }// end of constructor
 
+    private void setLitreLimit(Double limit) {
+        this.litreLimit = limit;
+    }
 
 
     private void setGasAmount() {
@@ -318,7 +319,6 @@ public class Pump extends JFrame {
         txtPlus.setText(String.valueOf(gasPrices[1]));
         txtSupreme.setText(String.valueOf(gasPrices[2]));
     }
-
 
 
     // Update the amount being displayed
@@ -331,7 +331,7 @@ public class Pump extends JFrame {
     // Update the amount being displayed
     private boolean underLitersLimit() {
         Double litersFilledByNow =  Double.parseDouble(lblHundredLower.getText() + lblTenLower.getText() + lblOneLower.getText() + "." + lblCentTwoLower.getText() + lblCentOneLower.getText());
-        return (litersFilledByNow < litreLimit);
+        return (litersFilledByNow < this.litreLimit);
     }
 
     private boolean checkPresetLimit() {
@@ -392,8 +392,11 @@ public class Pump extends JFrame {
                         break; // exit the loop
                     }
                 }
+
+                // reset i
+                i = 0;
             } else {
-                lblHundredLower.setText(String.valueOf(i));
+                lblCentOneLower.setText(String.valueOf(i));
                 if (!underLitersLimit()) {
                     break; // exit the loop
                 }
@@ -418,8 +421,7 @@ public class Pump extends JFrame {
         } else {
             lblOneUpper.setText(amountDigits[0]);
         }
-        // clear preset amount
-        this.presetAmount = 0.0;
+
     }
 
 
